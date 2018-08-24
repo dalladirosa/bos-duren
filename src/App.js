@@ -6,8 +6,10 @@ import './css/style.css'
 class App extends React.Component {
   state = {
     product: [
-      { id: 1, nama: 'Es Kelapa Duren', harga: 14000, jumlah: 3 },
-      { id: 2, nama: 'Es Kelapa Duren Milo', harga: 17000, jumlah: 5 }
+      { id: 1, nama: 'Es Kelapa Duren', harga: 14000, jumlah: 0 },
+      { id: 2, nama: 'Es Kelapa Duren Milo', harga: 17000, jumlah: 0 },
+      { id: 3, nama: 'Es Kelapa', harga: 9000, jumlah: 0 },
+      { id: 4, nama: 'Es Kepal Duren', harga: 19000, jumlah: 0 }
     ],
     order: [{ jumlah: 0 }, { jumlah: 0 }]
   }
@@ -16,6 +18,7 @@ class App extends React.Component {
     const product = [...this.state.product]
     const index = product.indexOf(key)
     product[index] = update
+
     this.setState({ product })
   }
 

@@ -3,21 +3,20 @@ import { convertToRupiah } from '../Helpers'
 
 class Product extends React.Component {
   renderSpecial = () =>
-    this.props.length === this.props.count + 1 ? (
-      ''
-    ) : (
+    this.props.length === this.props.count ? (
       <div className="special">
         <div className="specialContent">Total Harga</div>
       </div>
-    )
+    ) : null
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     // update that fish
     // 1. Take a copy of the current fish
     const updatedProduct = {
       ...this.props.product,
-      [event.currentTarget.name]: event.currentTarget.value
+      [e.currentTarget.name]: e.currentTarget.value
     }
+
     this.props.addJumlah(this.props.product, updatedProduct)
   }
 
@@ -58,7 +57,7 @@ class Product extends React.Component {
             </a>
           </div>
         </div>
-        {this.renderSpecial(id)}
+        {this.renderSpecial()}
       </li>
     )
   }

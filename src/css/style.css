@@ -266,7 +266,7 @@ img {
 .cart .items {
   display: block;
   width: 100%;
-  /* vertical-align: middle; */
+  vertical-align: middle;
   padding: 1.5em;
   border-bottom: 1px solid #fafafa;
 }
@@ -287,12 +287,12 @@ img {
   margin-bottom: 0.5em;
 }
 .cart .items .cartSection h3 {
-  width: 19em;
   font-size: 1em;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.025em;
+  width: 30rem;
 }
 .cart .items .cartSection p {
   display: inline-block;
@@ -334,7 +334,7 @@ img {
   margin: 1em 0.5em 0 0;
 }
 .cart .items .cartSection .itemImg {
-  /* width: 8em; */
+  width: 8em;
   display: inline;
   padding-right: 1em;
 }
@@ -458,7 +458,7 @@ a.remove:hover {
 }
 .promoCode .btn {
   font-size: 0.85em;
-  padding: 0.5em 2em;
+  paddding: 0.5em 2em;
 }
 
 /* TOTAL AND CHECKOUT  */
