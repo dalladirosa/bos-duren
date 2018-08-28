@@ -9,6 +9,8 @@ class Product extends React.Component {
       </div>
     ) : null
 
+  // onChange = (e) => this.setState({ [e.target.name]: e.target.value })
+
   handleChange = (e) => {
     // update that fish
     // 1. Take a copy of the current fish

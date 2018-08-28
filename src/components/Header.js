@@ -9,7 +9,7 @@ const Header = () => (
     <div className="heading cf">
       <h1>My Cart</h1>
       <a href="" className="continue">
-        History
+        Cart
       </a>
     </div>
   </header>

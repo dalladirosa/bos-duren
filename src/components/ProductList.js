@@ -18,7 +18,7 @@ const ProductList = (props) => (
         ))}
       </ul>
     </div>
-    <TotalShopping product={props.product} />
+    <TotalShopping product={props.product} addOrder={props.addOrder} />
   </React.Fragment>
 )
 

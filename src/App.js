@@ -11,7 +11,7 @@ class App extends React.Component {
       { id: 3, nama: 'Es Kelapa', harga: 9000, jumlah: 0 },
       { id: 4, nama: 'Es Kepal Duren', harga: 19000, jumlah: 0 }
     ],
-    order: [{ jumlah: 0 }, { jumlah: 0 }]
+    order: []
   }
 
   addJumlah = (key, update) => {
@@ -22,6 +22,9 @@ class App extends React.Component {
     this.setState({ product })
   }
 
+  addOrder = (newOrder) => {
+    this.setState({ order: [...this.state.order, newOrder] })
+  }
   render() {
     const length = this.state.product.length
     return (
@@ -30,11 +33,12 @@ class App extends React.Component {
         <ProductList
           length={length}
           product={this.state.product}
+          order={this.state.order}
+          addOrder={this.addOrder}
           addJumlah={this.addJumlah}
         />
       </div>
     )
   }
 }
-
 export default App

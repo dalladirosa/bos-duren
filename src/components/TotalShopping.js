@@ -1,15 +1,27 @@
 import React from 'react'
 import { convertToRupiah } from '../Helpers'
+import uuid from 'uuid'
 
 class TotalShopping extends React.Component {
   state = {
-    pembayaran: '0'
+    pembayaran: 0
   }
 
   inputPembayaran = (e) => {
     const jumlah = e.currentTarget.value
     this.setState({ pembayaran: jumlah })
   }
+
+  addOrder = (e) => {
+    e.preventDefault()
+    const newOrder = {
+      date: Date.now(),
+      id: uuid(),
+      menu: this.props.product
+    }
+    this.props.addOrder(newOrder)
+  }
+
   render() {
     const productIds = Object.keys(this.props.product)
     const total = productIds.reduce((prevTotal, key) => {
@@ -33,14 +45,14 @@ class TotalShopping extends React.Component {
         </div>
         <div className="subtotal cf">
           <ul>
-            <li class="totalRow">
-              <span class="label">Subtotal</span>
-              <span class="value">{convertToRupiah(total)}</span>
+            <li className="totalRow">
+              <span className="label">Subtotal</span>
+              <span className="value">{convertToRupiah(total)}</span>
             </li>
 
-            <li class="totalRow">
-              <span class="label">Pembayaran</span>
-              <span class="value">
+            <li className="totalRow">
+              <span className="label">Pembayaran</span>
+              <span className="value">
                 {convertToRupiah(this.state.pembayaran)}
               </span>
             </li>
@@ -50,9 +62,11 @@ class TotalShopping extends React.Component {
               <span className="value">{convertToRupiah(totalKembalian)}</span>
             </li>
             <li className="totalRow">
-              <a href="" className="btn continue">
-                Checkout
-              </a>
+              <form onSubmit={this.addOrder}>
+                <button type="submit" className="btn continue">
+                  Checkout
+                </button>
+              </form>
             </li>
           </ul>
         </div>
