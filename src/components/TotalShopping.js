@@ -1,6 +1,7 @@
 import React from 'react'
 import { convertToRupiah } from '../Helpers'
 import uuid from 'uuid'
+import moment from 'moment'
 
 class TotalShopping extends React.Component {
   state = {
@@ -8,16 +9,18 @@ class TotalShopping extends React.Component {
   }
 
   inputPembayaran = (e) => {
-    const jumlah = e.currentTarget.value
+    const jumlah = parseInt(e.currentTarget.value)
     this.setState({ pembayaran: jumlah })
   }
 
-  addOrder = (e) => {
+  addOrder = (total, e) => {
     e.preventDefault()
     const newOrder = {
       date: Date.now(),
       id: uuid(),
-      menu: this.props.product
+      menu: this.props.product,
+      pembayaran: this.state.pembayaran,
+      total: total
     }
     this.props.addOrder(newOrder)
   }
@@ -26,7 +29,6 @@ class TotalShopping extends React.Component {
     const productIds = Object.keys(this.props.product)
     const total = productIds.reduce((prevTotal, key) => {
       const product = this.props.product
-      console.log()
       return prevTotal + product[key].jumlah * product[key].harga
     }, 0)
     const totalKembalian = total - this.state.pembayaran
@@ -46,15 +48,15 @@ class TotalShopping extends React.Component {
         <div className="subtotal cf">
           <ul>
             <li className="totalRow">
-              <span className="label">Subtotal</span>
-              <span className="value">{convertToRupiah(total)}</span>
-            </li>
-
-            <li className="totalRow">
               <span className="label">Pembayaran</span>
               <span className="value">
                 {convertToRupiah(this.state.pembayaran)}
               </span>
+            </li>
+
+            <li className="totalRow">
+              <span className="label">Subtotal</span>
+              <span className="value">{convertToRupiah(total)}</span>
             </li>
 
             <li className="totalRow final">
@@ -62,7 +64,7 @@ class TotalShopping extends React.Component {
               <span className="value">{convertToRupiah(totalKembalian)}</span>
             </li>
             <li className="totalRow">
-              <form onSubmit={this.addOrder}>
+              <form onSubmit={(e) => this.addOrder(total, e)}>
                 <button type="submit" className="btn continue">
                   Checkout
                 </button>
