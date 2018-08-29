@@ -1,7 +1,25 @@
 import React from 'react'
 import { convertToRupiah } from '../Helpers'
+import { changeJumlah } from '../actions/productActions'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class Product extends React.Component {
+  state = {
+    id: this.props.product.id,
+    nama: this.props.product.nama,
+    harga: this.props.product.harga,
+    jumlah: this.props.product.jumlah
+  }
+
+  onAmountChange = (index, e) => {
+    const jumlah = e.currentTarget.value
+    if (!jumlah || jumlah.match(/^\d{1,}(\.\d{0,2})?$/)) {
+      this.props.changeJumlah(index, jumlah)
+      this.setState(() => ({ jumlah }))
+    }
+  }
+
   renderSpecial = () =>
     this.props.length === this.props.count ? (
       <div className="special">
@@ -9,21 +27,17 @@ class Product extends React.Component {
       </div>
     ) : null
 
-  // onChange = (e) => this.setState({ [e.target.name]: e.target.value })
-
-  handleChange = (e) => {
-    // update that fish
-    // 1. Take a copy of the current fish
-    const updatedProduct = {
-      ...this.props.product,
-      [e.currentTarget.name]: e.currentTarget.value
-    }
-
-    this.props.addJumlah(this.props.product, updatedProduct)
-  }
+  // handleChange = (e) => {
+  //   update that fish
+  //   1. Take a copy of the current fish
+  //   const updatedProduct = {
+  //     ...this.props.product,
+  //     [e.currentTarget.name]: e.currentTarget.value
+  //   this.props.addJumlah(this.props.product, updatedProduct)
+  // }
 
   render() {
-    const { id, nama, harga, jumlah } = this.props.product
+    const { id, nama, harga, jumlah } = this.state
     return (
       <li
         key={id}
@@ -44,7 +58,7 @@ class Product extends React.Component {
                 name="jumlah"
                 className="qty"
                 value={jumlah}
-                onChange={this.handleChange}
+                onChange={(e) => this.onAmountChange(this.props.index, e)}
               />
               x {convertToRupiah(harga)}
             </p>
@@ -65,4 +79,11 @@ class Product extends React.Component {
   }
 }
 
-export default Product
+Product.propTypes = {
+  changeJumlah: PropTypes.func.isRequired
+}
+
+export default connect(
+  null,
+  { changeJumlah }
+)(Product)

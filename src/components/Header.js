@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => (
   <header className="header">
@@ -8,9 +9,9 @@ const Header = () => (
     </h1>
     <div className="heading cf">
       <h1>My Cart</h1>
-      <a href="" className="continue">
+      <Link to="/" className="continue">
         Cart
-      </a>
+      </Link>
     </div>
   </header>
 )

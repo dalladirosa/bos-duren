@@ -292,7 +292,7 @@ img {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.025em;
-  width: 30rem;
+  width: 20em;
 }
 .cart .items .cartSection p {
   display: inline-block;
@@ -416,8 +416,7 @@ a.remove:hover {
   background: #f69679;
 }
 
-.btn:link,
-.btn:visited {
+.btn {
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: -0.015em;
@@ -427,6 +426,7 @@ a.remove:hover {
   background: #82ca9c;
   font-weight: bold;
   border-radius: 50px;
+  border: none;
   float: right;
   text-align: right;
   -webkit-transition: all 0.25s linear;
@@ -458,13 +458,13 @@ a.remove:hover {
 }
 .promoCode .btn {
   font-size: 0.85em;
-  paddding: 0.5em 2em;
+  padding: 0.5em 2em;
 }
 
 /* TOTAL AND CHECKOUT  */
 .subtotal {
   float: right;
-  width: 35%;
+  width: 55%;
 }
 .subtotal .totalRow {
   padding: 0.5em;
@@ -487,7 +487,7 @@ a.remove:hover {
 }
 .subtotal .totalRow .value {
   letter-spacing: -0.025em;
-  width: 55%;
+  width: 35%;
 }
 
 @media only screen and (max-width: 39.375em) {

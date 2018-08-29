@@ -1,7 +1,6 @@
 import React from 'react'
 import { convertToRupiah } from '../Helpers'
 import uuid from 'uuid'
-import moment from 'moment'
 
 class TotalShopping extends React.Component {
   state = {
@@ -9,20 +8,26 @@ class TotalShopping extends React.Component {
   }
 
   inputPembayaran = (e) => {
-    const jumlah = parseInt(e.currentTarget.value)
-    this.setState({ pembayaran: jumlah })
+    const jumlah = e.currentTarget.value
+    if (!jumlah || jumlah.match(/^\d+$/)) {
+      this.setState({ pembayaran: jumlah })
+    }
   }
 
   addOrder = (total, e) => {
+    const { pembayaran } = this.state
     e.preventDefault()
     const newOrder = {
       date: Date.now(),
       id: uuid(),
       menu: this.props.product,
-      pembayaran: this.state.pembayaran,
+      pembayaran: pembayaran,
       total: total
     }
-    this.props.addOrder(newOrder)
+    const isZero = total && pembayaran !== 0
+    if (isZero) {
+      this.props.addOrder(newOrder)
+    }
   }
 
   render() {
@@ -31,7 +36,7 @@ class TotalShopping extends React.Component {
       const product = this.props.product
       return prevTotal + product[key].jumlah * product[key].harga
     }, 0)
-    const totalKembalian = total - this.state.pembayaran
+    const totalKembalian = this.state.pembayaran - total
     return (
       <React.Fragment>
         <div className="promoCode">
