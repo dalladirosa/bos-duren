@@ -1,6 +1,9 @@
 import React from 'react'
-import { convertToRupiah } from '../Helpers'
+import PropTypes from 'prop-types'
 import uuid from 'uuid'
+import { convertToRupiah } from '../Helpers'
+import { addOrder } from '../actions/orderActions'
+import { connect } from 'react-redux'
 
 class TotalShopping extends React.Component {
   state = {
@@ -15,18 +18,18 @@ class TotalShopping extends React.Component {
   }
 
   addOrder = (total, e) => {
-    const { pembayaran } = this.state
     e.preventDefault()
     const newOrder = {
       date: Date.now(),
       id: uuid(),
       menu: this.props.product,
-      pembayaran: pembayaran,
+      pembayaran: this.state.pembayaran,
       total: total
     }
-    const isZero = total && pembayaran !== 0
+    const isZero = total && this.state.pembayaran !== 0
     if (isZero) {
       this.props.addOrder(newOrder)
+      this.props.history.push('/history')
     }
   }
 
@@ -82,4 +85,11 @@ class TotalShopping extends React.Component {
   }
 }
 
-export default TotalShopping
+TotalShopping.propTypes = {
+  addOrder: PropTypes.func.isRequired
+}
+
+export default connect(
+  null,
+  { addOrder }
+)(TotalShopping)

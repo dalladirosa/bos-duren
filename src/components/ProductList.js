@@ -1,6 +1,7 @@
 import React from 'react'
 import TotalShopping from './TotalShopping'
 import Product from './Product'
+import Header from './Header'
 import PropTypes from 'prop-types'
 import { getProducts } from '../actions/productActions'
 import { connect } from 'react-redux'
@@ -13,6 +14,7 @@ class ProductList extends React.Component {
     const { products } = this.props
     return (
       <React.Fragment>
+        <Header title="My Cart" location="cart" />
         <div className="cart">
           <ul className="cartWrap">
             {Object.keys(products).map((key, index) => (
@@ -26,7 +28,7 @@ class ProductList extends React.Component {
             ))}
           </ul>
         </div>
-        <TotalShopping product={products} />
+        <TotalShopping product={products} history={this.props.history} />
       </React.Fragment>
     )
   }
