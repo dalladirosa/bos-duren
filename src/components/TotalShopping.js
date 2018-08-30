@@ -86,7 +86,8 @@ class TotalShopping extends React.Component {
 }
 
 TotalShopping.propTypes = {
-  addOrder: PropTypes.func.isRequired
+  addOrder: PropTypes.func.isRequired,
+  pembayaran: PropTypes.number
 }
 
 export default connect(

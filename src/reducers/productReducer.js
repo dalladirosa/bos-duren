@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, CHANGE_JUMLAH } from '../actions/types'
+import { GET_PRODUCTS, CHANGE_JUMLAH, RESET_PRODUCTS } from '../actions/types'
 
 const initialState = {
   products: [
@@ -14,6 +14,11 @@ export default function(state = initialState, action) {
     case GET_PRODUCTS:
       return {
         ...state
+      }
+    case RESET_PRODUCTS:
+      return {
+        ...state,
+        products: [action.payload]
       }
     case CHANGE_JUMLAH:
       state.products[action.id].jumlah = action.jumlah
