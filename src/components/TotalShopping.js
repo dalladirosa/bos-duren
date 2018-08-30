@@ -17,7 +17,7 @@ class TotalShopping extends React.Component {
     }
   }
 
-  addOrder = (total, e) => {
+  addOrder = (total, totalKembalian, e) => {
     e.preventDefault()
     const newOrder = {
       date: Date.now(),
@@ -26,7 +26,7 @@ class TotalShopping extends React.Component {
       pembayaran: this.state.pembayaran,
       total: total
     }
-    const isZero = total && this.state.pembayaran !== 0
+    const isZero = total && this.state.pembayaran !== 0 && totalKembalian >= 0
     if (isZero) {
       this.props.addOrder(newOrder)
       this.props.history.push('/history')
@@ -72,7 +72,7 @@ class TotalShopping extends React.Component {
               <span className="value">{convertToRupiah(totalKembalian)}</span>
             </li>
             <li className="totalRow">
-              <form onSubmit={(e) => this.addOrder(total, e)}>
+              <form onSubmit={(e) => this.addOrder(total, totalKembalian, e)}>
                 <button type="submit" className="btn continue">
                   Checkout
                 </button>
