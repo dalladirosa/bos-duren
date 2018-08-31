@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+public/bundle.js.map
+public/main.css.map
 public/bundle.js
 public/main.css
 

@@ -20,7 +20,7 @@
   "scripts": {
     "dev-server": "webpack-dev-server --open --mode development ./src/App.js --output ./public/dist/bundle.js",
     "dev": "webpack --mode=development ./src/App.js --output ./public/dist/bundle.js",
-    "build": "webpack --mode=production ./src/App.js --output ./public/dist/bundle.js",
+    "build": "webpack -p --env production ./src/App.js --output ./public/dist/bundle.js",
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build --prod"
   },
