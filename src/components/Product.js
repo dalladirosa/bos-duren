@@ -45,11 +45,11 @@ class Product extends React.Component {
       >
         <div className="infoWrap">
           <div className="cartSection">
-            <img
+            {/*<img
               className="itemImg"
               src="http://pluspng.com/img-png/png-durian-download-1100.png"
               alt="PNG Durian"
-            />
+            />*/}
             <h3>{nama}</h3>
             <p>
               <input
