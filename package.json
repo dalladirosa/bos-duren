@@ -18,9 +18,11 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development ./src/App.js --output ./public/dist/bundle.js",
+    "dev-server": "webpack-dev-server --open --mode development ./src/App.js --output ./public/dist/bundle.js",
     "dev": "webpack --mode=development ./src/App.js --output ./public/dist/bundle.js",
-    "build": "webpack --mode=production ./src/App.js --output ./public/dist/bundle.js"
+    "build": "webpack --mode=production ./src/App.js --output ./public/dist/bundle.js",
+    "start": "node server/server.js",
+    "heroku-postbuild": "npm run build --prod"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
