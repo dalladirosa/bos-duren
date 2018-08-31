@@ -4,6 +4,7 @@
   "description": "",
   "main": "App.js",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0",
     "express": "^4.16.3",
     "moment": "^2.22.2",
     "react": "^16.4.2",
