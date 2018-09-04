@@ -1,14 +1,18 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
-import { Provider } from 'react-redux'
+import ReactDOM from 'react-dom'
+import AppRouter from './routers/AppRouter'
 import store from './store'
+<<<<<<< HEAD
 
 import ProductList from './components/ProductList'
+=======
+import { Provider } from 'react-redux'
+>>>>>>> 6cc6d39a00c238c2a5e6ee0f3a7f321d23efde89
 
 import './css/style.css'
 import HistoryDashboardPage from './components/HistoryDashboardPage'
 
+<<<<<<< HEAD
 class App extends React.Component {
   render() {
     return (
@@ -26,3 +30,12 @@ class App extends React.Component {
   }
 }
 export default App
+=======
+const jsx = (
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+)
+
+ReactDOM.render(jsx, document.getElementById('root'))
+>>>>>>> 6cc6d39a00c238c2a5e6ee0f3a7f321d23efde89
