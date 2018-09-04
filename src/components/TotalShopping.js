@@ -20,7 +20,7 @@ class TotalShopping extends React.Component {
   addOrder = (total, totalKembalian, e) => {
     e.preventDefault()
     const newOrder = {
-      date: Date.now(),
+      createdAt: Date.now(),
       id: uuid(),
       menu: this.props.product,
       pembayaran: this.state.pembayaran,

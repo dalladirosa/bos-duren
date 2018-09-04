@@ -245,6 +245,17 @@ img {
   right: -10px;
 }
 
+.select {
+  margin: 0.5em 0em;
+  width: 5rem;
+  border-radius: 5rem;
+  outline: 0px;
+}
+
+.filter {
+  border-bottom: 1px solid #d0d0d0;
+}
+
 .tableHead {
   display: table;
   width: 100%;

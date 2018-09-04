@@ -1,46 +1,36 @@
-import React, { Component } from 'react'
-import Header from './Header'
-import History from './History'
+import React from 'react'
+import HistoryListItem from './HistoryListItem'
+import selectHistory from '../selector/HistorySelector'
 import PropTypes from 'prop-types'
-import { getOrders } from '../actions/orderActions'
 import { connect } from 'react-redux'
 
-class HistoryList extends Component {
-  componentDidMount() {
-    this.props.getOrders()
-  }
-  render() {
-    const { orders } = this.props
-    return (
-      <React.Fragment>
-        <Header title="My History" location="history" />
-        <div className="cart">
-          <ul className="cartWrap">
-            {Object.keys(orders).map((key, index) => (
-              <History
-                key={key}
-                index={index}
-                order={orders[key]}
-                count={index + 1}
-              />
-            ))}
-          </ul>
-        </div>
-      </React.Fragment>
-    )
-  }
-}
+const HistoryList = (props) => (
+  <React.Fragment>
+    <div className="cart">
+      <ul className="cartWrap">
+        {props.orders.length === 0 ? (
+          <p>No Orders</p>
+        ) : (
+          props.orders.map((order, index) => {
+            return (
+              <HistoryListItem key={order.id} count={index + 1} {...order} />
+            )
+          })
+        )}
+      </ul>
+    </div>
+  </React.Fragment>
+)
 
 HistoryList.propTypes = {
-  orders: PropTypes.array.isRequired,
-  getOrders: PropTypes.func.isRequired
+  orders: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  orders: state.order.orders
+  orders: selectHistory(state.order.orders, state.filters)
 })
 
 export default connect(
   mapStateToProps,
-  { getOrders }
+  null
 )(HistoryList)
