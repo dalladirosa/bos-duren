@@ -4,7 +4,7 @@ import { changeJumlah } from '../actions/productActions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-class Product extends React.Component {
+class ProductListItem extends React.Component {
   state = {
     id: this.props.product.id,
     nama: this.props.product.nama,
@@ -79,11 +79,11 @@ class Product extends React.Component {
   }
 }
 
-Product.propTypes = {
+ProductListItem.propTypes = {
   changeJumlah: PropTypes.func.isRequired
 }
 
 export default connect(
   null,
   { changeJumlah }
-)(Product)
+)(ProductListItem)

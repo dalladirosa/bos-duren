@@ -10,9 +10,6 @@ import './css/style.css'
 import HistoryDashboardPage from './components/HistoryDashboardPage'
 
 class App extends React.Component {
-  addOrder = (newOrder) => {
-    this.setState({ order: [...this.state.order, newOrder] })
-  }
   render() {
     return (
       <Provider store={store}>

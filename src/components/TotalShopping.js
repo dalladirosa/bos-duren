@@ -51,7 +51,7 @@ class TotalShopping extends React.Component {
             value={this.state.pembayaran}
             onChange={this.inputPembayaran}
           />
-          <a href="" className="btn" />
+          <a href="#!" className="btn" />
         </div>
         <div className="subtotal cf">
           <ul>

@@ -1,6 +1,6 @@
 import React from 'react'
 import TotalShopping from './TotalShopping'
-import Product from './Product'
+import ProductListItem from './ProductListItem'
 import Header from './Header'
 import PropTypes from 'prop-types'
 import { getProducts } from '../actions/productActions'
@@ -18,7 +18,7 @@ class ProductList extends React.Component {
         <div className="cart">
           <ul className="cartWrap">
             {Object.keys(products).map((key, index) => (
-              <Product
+              <ProductListItem
                 key={key}
                 index={index}
                 count={index + 1}
